@@ -1,14 +1,19 @@
-function MovieCard() {
+import React from "react";
+
+function MovieCard({ title, image, officialSiteUrl, rating, genres }) {
   return (
     <div className="movie-card">
       <div className="movie-image">
-        <img
-          src="https://i.pinimg.com/originals/a2/34/75/a234753b69e3bd27b7f1d448956c38af.jpg"
-          alt="movie"
-        />
+        <img src={image} alt={title} />
       </div>
-
-      <h3 className="movie-heading">Breaking Bad</h3>
+      <h3 className="movie-heading">{title}</h3>
+      {rating && <div className="movie-rating">⭐{rating || "N/A"}</div>}
+      {genres && <h5 className="movie-genre">{genres}</h5>}
+      {officialSiteUrl && (
+        <a href={officialSiteUrl} className="official-site-button">
+          Official Site
+        </a>
+      )}
     </div>
   );
 }
